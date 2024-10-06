@@ -8,6 +8,7 @@
     nodePackages.svelte-language-server
     nodePackages.typescript-language-server
     taplo
+    jdt-language-server
   ];
   programs.nixvim.plugins.lazy.plugins = [
     {
@@ -39,6 +40,7 @@
           {name = "svelte";}
           {name = "tsserver";}
           {name = "taplo";}
+          {name = "jdtls";}
         ];
       };
     }
