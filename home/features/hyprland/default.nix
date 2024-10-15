@@ -129,7 +129,7 @@
         monitor =
           map
           (
-            m: "${toString m.name},${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.x}x${toString m.y},1.25,transform,${toString m.rotating}"
+            m: "${toString m.name},${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.x}x${toString m.y},${toString m.scale},transform,${toString m.rotating}"
           )
           (config.myHomeManager.monitors);
         decoration = {

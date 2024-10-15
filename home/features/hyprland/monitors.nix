@@ -45,6 +45,10 @@ in rec {
           type = types.nullOr types.int;
           default = 0;
         };
+        scale = mkOption {
+          type = types.nullOr types.int;
+          default = 1;
+        };
       };
     });
     default = [];

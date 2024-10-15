@@ -35,6 +35,7 @@
       x = 0;
       y = 0;
       enabled = true;
+      scale = 1.25;
     }
   ];
 
