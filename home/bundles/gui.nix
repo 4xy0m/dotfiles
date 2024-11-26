@@ -10,6 +10,7 @@
     pavucontrol
     thunderbird
     obsidian
+    vial
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
