@@ -4,9 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
   ];
-  myHomeManager.nixvim.enable = true;
   myHomeManager.spotify.enable = true;
   myHomeManager.zellij.enable = true;
 
