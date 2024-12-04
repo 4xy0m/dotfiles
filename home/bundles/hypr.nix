@@ -11,6 +11,6 @@
   home.packages = with pkgs; [
     material-icons
     (callPackage ../../pkgs/icomoon-feather/default.nix {})
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    nerd-fonts.jetbrains-mono
   ];
 }

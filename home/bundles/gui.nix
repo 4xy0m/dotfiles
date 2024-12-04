@@ -5,8 +5,8 @@
   myHomeManager.gtk.enable = true;
 
   home.packages = with pkgs; [
-    gnome.gnome-calculator
-    gnome.nautilus
+    gnome-calculator
+    nautilus
     pavucontrol
     thunderbird
     obsidian
