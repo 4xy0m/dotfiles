@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [./monitors.nix ./cursor.nix];
@@ -126,6 +127,11 @@
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
+        workspace = map
+          (
+            m: lib.mkIf (m.rotating == 1) "m[${toString m.name}], layoutopt:orientation:top"
+          )
+          (config.myHomeManager.monitors);
         monitor =
           map
           (
