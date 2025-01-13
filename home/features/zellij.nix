@@ -7,7 +7,7 @@
     pkgs.callPackage ../../../pkgs/vim-zellij-navigator/default.nix {};
 in {
   programs.zellij = {enable = true;};
-  # home.packages = [ vim-zellij-navigator ];
+  programs.zellij.enableZshIntegration = true;
   xdg.configFile."zellij/config.kdl".text = with config.colorScheme.palette; ''
        plugin "compact-bar"
        default_layout "compact"
