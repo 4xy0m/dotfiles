@@ -15,11 +15,7 @@
       nodePackages.typescript-language-server
       taplo
       jdt-language-server
-      (python3.withPackages(ps: with ps; [
-        python-lsp-server
-        flake8
-        autopep8
-      ]))
+      pyright
     ];
     hm-activation = true;
     backup = true;

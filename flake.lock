@@ -241,11 +241,11 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1735641280,
-        "narHash": "sha256-llGzeN8SaBquRWWqtPdKEokpbQA498Hr65N3UGPxLj8=",
+        "lastModified": 1736804154,
+        "narHash": "sha256-DgIQieDnO3jteccBn2BYe8eS3minkPPMd8Y5cpk83e0=",
         "owner": "4xy0m",
         "repo": "nvim",
-        "rev": "4076109183bb3e88ef286f64e51d87bc2470e047",
+        "rev": "e3bc0e1019a5d7e63bfeb6dc91434768280315cf",
         "type": "github"
       },
       "original": {
