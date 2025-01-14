@@ -16,6 +16,7 @@
       taplo
       jdt-language-server
       pyright
+      black
     ];
     hm-activation = true;
     backup = true;
