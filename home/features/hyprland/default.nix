@@ -61,7 +61,8 @@
           animate_mouse_windowdragging = true;
         };
         input = {
-          kb_layout = "us";
+          kb_layout = "us,us";
+          kb_variant = "colemak_dh,";
           touchpad.disable_while_typing = false;
         };
         bind = [
