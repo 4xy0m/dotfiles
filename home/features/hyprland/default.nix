@@ -42,16 +42,16 @@
           "hyprctl setcursor ${config.myHomeManager.cursor.name} ${toString config.myHomeManager.cursor.size}"
         ];
         "$mainMod" = "SUPER";
-        "$1" = "Q";
-        "$2" = "W";
-        "$3" = "F";
-        "$4" = "P";
-        "$5" = "B";
-        "$6" = "J";
-        "$7" = "L";
-        "$8" = "U";
-        "$9" = "Y";
-        "$10" = "semicolon";
+        "$1" = "1";
+        "$2" = "2";
+        "$3" = "3";
+        "$4" = "4";
+        "$5" = "5";
+        "$6" = "6";
+        "$7" = "7";
+        "$8" = "8";
+        "$9" = "9";
+        "$10" = "0";
         gestures = {
           workspace_swipe = true;
         };
