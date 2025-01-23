@@ -17,6 +17,8 @@
       jdt-language-server
       pyright
       black
+      stylua
+      csharp-ls
     ];
     hm-activation = true;
     backup = true;
