@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvchad-starter = {
-      url = "github:4xy0m/nvim";
+      url = "path:nvim/";
       flake = false;
     };
     nvchad4nix = {
