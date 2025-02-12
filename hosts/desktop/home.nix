@@ -16,7 +16,6 @@
   myHomeManager.bundles.gui.enable = true;
   myHomeManager.bundles.cli.enable = true;
   myHomeManager.bundles.hypr.enable = true;
-  myHomeManager.bundles.dev.enable = true;
 
   myHomeManager.wallpaper = "abstract-swirls.jpg";
 
