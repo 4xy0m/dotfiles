@@ -1,0 +1,26 @@
+[manager]
+ratio = [0, 1, 0]
+
+[opener]
+edit = [
+  { run = 'bash ~/.config/yazi-tree/yazi-picker.sh edit "$1"', desc = "edit" },
+]
+hsplit = [
+  { run = 'bash ~/.config/yazi-tree/yazi-picker.sh split "$1"', desc = "hsplit" },
+]
+vsplit = [
+  { run = 'bash ~/.config/yazi-tree/yazi-picker.sh vsplit "$1"', desc = "vsplit" },
+]
+
+[open]
+prepend_rules = [{ mime = "text/*", use = ["edit", "hsplit", "vsplit"] }]
+
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*/"
+run = "git"

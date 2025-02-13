@@ -1,0 +1,7 @@
+[[manager.prepend_keymap]]
+run = 'shell "bash ~/.config/yazi-tree/yazi-picker.sh split $1"'
+on = "<C-h>"
+
+[[manager.prepend_keymap]]
+run = 'shell "bash ~/.config/yazi-tree/yazi-picker.sh vsplit $1"'
+on = "<C-v>"
