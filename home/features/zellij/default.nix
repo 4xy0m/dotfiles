@@ -1,10 +1,11 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
   ...
 }: {
-  programs.zellij = {enable = true;};
+  programs.zellij = {enable = true; package = inputs.zellij-nix.packages.x86_64-linux.zellij-upstream; };
   programs.zellij.enableZshIntegration = true;
   xdg.configFile."zellij/plugins/zellij-autolock.wasm".source = ./zellij-autolock.wasm;
   xdg.configFile."zellij/dev-layout.kdl".source = ./dev-layout.kdl;
@@ -15,19 +16,115 @@
        copy_on_select true
        theme "default"
        themes {
-    default {
-    	bg "#${base08}"
-    	black "#${base01}"
-    	blue "#${base0B}"
-    	cyan "#${base0F}"
-    	fg "#${base08}"
-    	green "#${base07}"
-    	magenta "#${base09}"
-    	orange "#${base0A}"
-    	red "#${base0A}"
-    	white "#${base09}"
-    	yellow "#${base07}"
-    }
+       default {
+                    text_selected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    text_unselected {
+                        base 0
+                        emphasis_0 "#${base09}"
+                        emphasis_1 0
+                        emphasis_2 "#${base07}"
+                        emphasis_3 "#${base09}"
+                        background 0
+                    }
+                    ribbon_selected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    ribbon_unselected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 "#${base09}"
+                        emphasis_2 0
+                        emphasis_3 0
+                        background "#${base08}"
+                    }
+                    table_title {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    table_cell_unselected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    table_cell_selected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    list_unselected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    list_selected {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                        background 0
+                    }
+                    frame_unselected {
+                        base "#383747"
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                    }
+                    frame_selected {
+                        base "#383747"
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                    }
+                    frame_highlight {
+                        base  "#383747"
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                    }
+                    exit_code_success {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                    }
+                    exit_code_error {
+                        base 0
+                        emphasis_0 0
+                        emphasis_1 0
+                        emphasis_2 0
+                        emphasis_3 0
+                    }
+                }
        }
   plugins {
     autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
