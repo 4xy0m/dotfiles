@@ -62,7 +62,6 @@
         };
         input = {
           kb_layout = "us,us";
-          kb_variant = "colemak_dh,";
           touchpad.disable_while_typing = false;
         };
         bind = [
