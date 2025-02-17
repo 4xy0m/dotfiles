@@ -1,10 +1,15 @@
 [opener]
-edit-folder = [
-  { run = 'zellij action new-tab -c "$1" -l ~/.config/zellij/dev-layout.kdl' },
-]
+edit = [{ run = 'yazi-edit "$1"' }]
 
 [open]
-prepend_rules = [{ name = "*/", use = ["edit-folder"] }]
+prepend_rules = [
+  { name = "*/", use = [
+    "edit",
+  ] },
+  { mime = "text/*", use = [
+    "edit",
+  ] },
+]
 
 [[plugin.prepend_fetchers]]
 id = "git"

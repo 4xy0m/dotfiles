@@ -8,11 +8,11 @@
   programs.zellij = {enable = true; package = inputs.zellij-nix.packages.x86_64-linux.zellij-upstream; };
   programs.zellij.enableZshIntegration = true;
   xdg.configFile."zellij/plugins/zellij-autolock.wasm".source = ./zellij-autolock.wasm;
-  xdg.configFile."zellij/dev-layout.kdl".source = ./dev-layout.kdl;
+  xdg.configFile."zellij/dev-layout-folder.kdl".source = ./dev-layout-folder.kdl;
+  xdg.configFile."zellij/dev-layout-file.kdl".source = ./dev-layout-file.kdl;
   xdg.configFile."zellij/config.kdl".text = with config.colorScheme.palette; ''
        plugin "compact-bar"
        default_layout "compact"
-       pane_frames false
        copy_on_select true
        theme "default"
        themes {
@@ -90,21 +90,21 @@
                         background 0
                     }
                     frame_unselected {
-                        base "#383747"
+                        base "#${base04}"
                         emphasis_0 0
                         emphasis_1 0
                         emphasis_2 0
                         emphasis_3 0
                     }
                     frame_selected {
-                        base "#383747"
+                        base "#${base07}"
                         emphasis_0 0
                         emphasis_1 0
                         emphasis_2 0
                         emphasis_3 0
                     }
                     frame_highlight {
-                        base  "#383747"
+                        base  "#${base09}"
                         emphasis_0 0
                         emphasis_1 0
                         emphasis_2 0
