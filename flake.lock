@@ -307,8 +307,8 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1739486231,
-        "narHash": "sha256-eyZFrRxAWKk1WCIeiKDBu3hWtJFod2jRTQ8RvqVMD0s=",
+        "lastModified": 1739833787,
+        "narHash": "sha256-q+ZVwdqPLZbwPX0nZzR412qaI34zvUZg4tLAzufb9aI=",
         "path": "/home/nixos/dotfiles/nvim/",
         "type": "path"
       },
