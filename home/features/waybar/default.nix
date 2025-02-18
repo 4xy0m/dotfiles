@@ -37,7 +37,7 @@
           "privacy"
         ];
         privacy = {
-          icon-spacing = 4;
+          icon-spacing = 10;
           icon-size = 18;
           transition-duration = 250;
           modules = [
