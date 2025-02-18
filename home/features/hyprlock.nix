@@ -31,7 +31,7 @@
           color = "rgb(${base05})";
           font_size = 20;
           font_family = "JetBrains Mono Nerd Font 10";
-          position = "0, -40";
+          position = "0, -30";
           halign = "center";
           valign = "center";
         }
@@ -51,7 +51,7 @@
         {
           monitor = (builtins.head config.myHomeManager.monitors).name;
           size = "250, 50";
-          position = "0, 65";
+          position = "0, 80";
           font_color = "rgb(${base05})";
           outer_color = "rgb(${base05})";
           inner_color = "rgb(${base00})";
