@@ -1,99 +1,92 @@
 {pkgs, ...}: {
   home.packages = [pkgs.vesktop];
   xdg.configFile."vesktop/settings/quickCss.css".text = ''
-    /**
-     * @name midnight (catppuccin mocha)
-     * @description A dark, rounded discord theme. Based on catppuccin mocha theme (https://github.com/catppuccin/catppuccin).
-     * @author refact0r
-     * @version 1.6.2
-     * @invite nz87hXyvcy
-     * @website https://github.com/refact0r/midnight-discord
-     * @source https://github.com/refact0r/midnight-discord/blob/master/flavors/midnight-catppuccin-mocha.theme.css
-     * @authorId 508863359777505290
-     * @authorLink https://www.refact0r.dev
-    */
+  /**
+   * @name system24 (catppuccin mocha)
+   * @description A tui-style discord theme. Based on the catppuccin mocha color palette.
+   * @author refact0r
+   * @version 1.0.0
+   * @invite nz87hXyvcy
+   * @website https://github.com/refact0r/system24
+   * @source https://github.com/refact0r/system24/blob/master/flavors/catppuccin-mocha.theme.css 
+   * @authorId 508863359777505290
+   * @authorLink https://www.refact0r.dev
+  */
 
-    /* IMPORTANT: make sure to enable dark mode in discord settings for the theme to apply properly!!! */
+  /* import theme modules */
+  @import url('https://refact0r.github.io/system24/src/main.css'); /* main theme css. DO NOT REMOVE */
+  @import url('https://refact0r.github.io/system24/src/unrounding.css'); /* gets rid of all rounded corners. remove if you want rounded corners. */
 
-    @import url('https://refact0r.github.io/midnight-discord/midnight.css');
+  /* customize things here */
+  :root {
+    --font: 'DM Mono'; /* UI font name. it must be installed on your system. */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. */
+    font-weight: 300; /* UI font weight. */
+    --label-font-weight: 500; /* font weight for panel labels. */
+    --corner-text: 'catppuccin24'; /* custom text to display in the corner. only works on windows. */
+    --pad: 16px; /* padding between panels. */
+    --txt-pad: 10px; /* padding inside panels to prevent labels from clipping */
+    --panel-roundness: 0px; /* corner roundness of panels. ONLY WORKS IF unrounding.css IS REMOVED (see above). */
 
-    /* customize things here */
-    :root {
-    	/* font, change to 'gg sans' for default discord font*/
-    	--font: 'figtree';
+    /* background colors */
+    --bg-0: #1e1e2e; /* main background color. */
+    --bg-1: #181825; /* background color for secondary elements like code blocks, embeds, etc. */
+    --bg-2: #313244; /* color of neutral buttons. */
+    --bg-3: #45475a; /* color of neutral buttons when hovered. */
 
-    	/* top left corner text */
-    	--corner-text: 'Catppuccin';
+    /* state modifiers */
+    --hover: color-mix(in oklch, var(--txt-3), transparent 80%); /* color of hovered elements. */
+    --active: color-mix(in oklch, var(--txt-3), transparent 60%); /* color of elements when clicked. */
+    --selected: var(--active); /* color of selected elements. */
 
-    /* color of status indicators and window controls */
-    	--online-indicator: #a6da95; /* change to #23a55a for default green */
-    	--dnd-indicator: #ed8796; /* change to #f13f43 for default red */
-    	--idle-indicator: #eed49f; /* change to #f0b232 for default yellow */
-    	--streaming-indicator: #c6a0f6; /* change to #593695 for default purple */
+    /* text colors */
+    --txt-dark: var(--bg-0); /* color of dark text on colored backgrounds. */
+    --txt-link: var(--cyan); /* color of links. */
+    --txt-0: #eaeefa; /* color of bright/white text. */
+    --txt-1: #cdd6f4; /* main text color. */
+    --txt-2: #9399b2; /* color of secondary text like channel list. */
+    --txt-3: #585b70; /* color of muted text. */
 
-    	/* accent colors */
-    	--accent-1: hsl(234, 82%, 85%); /* links */
-    	--accent-2: hsl(234, 82%, 85%); /* general unread/mention elements */
-    	--accent-3: hsl(234, 82%, 85%); /* accent buttons */
-    	--accent-4: hsl(234, 68%, 77%); /* accent buttons when hovered */
-    	--accent-5: hsl(234, 52%, 69%); /* accent buttons when clicked */
-    	--mention: hsla(234, 67%, 77%, 0.1); /* mentions & mention messages */
-    	--mention-hover: hsla(234, 67%, 77%, 0.05); /* mentions & mention messages when hovered */
+    /* accent colors */
+    --acc-0: var(--lavender); /* main accent color. */
+    --acc-1: var(--lavender-1); /* color of accent buttons when hovered. */
+    --acc-2: var(--lavender-2); /* color of accent buttons when clicked. */
 
-    	/* text colors */
-    	--text-0: var(--bg-4); /* text on colored elements */
-    	--text-1: hsl(220, 40%, 95%); /* bright text on colored elements */
-    	--text-2: hsl(226, 64%, 88%); /* headings and important text */
-    	--text-3: hsl(228, 24%, 72%); /* normal text */
-    	--text-4: hsl(230, 13%, 55%); /* icon buttons and channels */
-    	--text-5: hsl(233, 12%, 39%); /* muted channels/chats and timestamps */
+    /* borders */
+    --border-width: 2px; /* panel border thickness. */
+    --border-color: var(--bg-3); /* panel border color. */
+    --border-hover-color: var(--acc-0); /* panel border color when hovered. */
+    --border-transition: 0.2s ease; /* panel border transition. */
 
-    	/* background and dark colors */
-    	--bg-1: hsl(234, 13%, 31%); /* dark buttons when clicked */
-    	--bg-2: hsl(237, 16%, 23%); /* dark buttons */
-    	--bg-3: hsl(240, 21%, 12%); /* spacing, secondary elements */
-    	--bg-4: hsl(240, 21%, 15%); /* main background color */
-    	--hover: hsla(237, 18%, 53%, 0.1); /* channels and buttons when hovered */
-    	--active: hsla(235, 15%, 53%, 0.2); /* channels and buttons when clicked or selected */
-    	--message-hover: hsla(240, 0%, 0%, 0.1); /* messages when hovered */
+    /* status dot colors */
+    --online-dot: var(--green); /* color of online dot. */
+    --dnd-dot: var(--pink); /* color of do not disturb dot. */
+    --idle-dot: var(--yellow); /* color of idle dot. */
+    --streaming-dot: var(--purple); /* color of streaming dot. */
 
-    	/* amount of spacing and padding */
-    	--spacing: 12px;
+    /* mention/ping and message colors */
+    --mention-txt: var(--acc-0); /* color of mention text. */
+    --mention-bg: color-mix(in oklch, var(--acc-0), transparent 90%); /* background highlight of mention text. */
+    --mention-overlay: color-mix(in oklch, var(--acc-0), transparent 90%); /* overlay color of messages that mention you. */
+    --mention-hover-overlay: color-mix(in oklch, var(--acc-0), transparent 95%); /* overlay color of messages that mention you when hovered. */
+    --reply-overlay: var(--active); /* overlay color of message you are replying to. */
+    --reply-hover-overlay: var(--hover); /* overlay color of message you are replying to when hovered. */
 
-    	/* animations */
-    	/* ALL ANIMATIONS CAN BE DISABLED WITH REDUCED MOTION IN DISCORD SETTINGS */
-    	--list-item-transition: 0.2s ease; /* channels/members/settings hover transition */
-    	--unread-bar-transition: 0.2s ease; /* unread bar moving into view transition */
-    	--moon-spin-transition: 0.4s ease; /* moon icon spin */
-    	--icon-spin-transition: 1s ease; /* round icon button spin (settings, emoji, etc.) */
-
-    	/* corner roundness (border-radius) */
-    	--roundness-xl: 22px; /* roundness of big panel outer corners */
-    	--roundness-l: 20px; /* popout panels */
-    	--roundness-m: 16px; /* smaller panels, images, embeds */
-    	--roundness-s: 12px; /* members, settings inputs */
-    	--roundness-xs: 10px; /* channels, buttons */
-    	--roundness-xxs: 8px; /* searchbar, small elements */
-
-    	/* direct messages moon icon */
-    	/* change to block to show, none to hide */
-    	--discord-icon: none; /* discord icon */
-    	--moon-icon: none; /* moon icon */
-    	--moon-icon-url: none; /* custom icon url */
-    	--moon-icon-size: auto;
-
-    	/* filter uncolorable elements to fit theme */
-    	/* (just set to none, they're too much work to configure) */
-    	--login-bg-filter: none; /* login background artwork */
-    	--green-to-accent-3-filter: none; /* add friend page explore icon */
-    	--blurple-to-accent-3-filter: none; /* add friend page school icon */
-    }
-
-    /* catppuccin icon */
-    .childWrapper_f90abb:has(> svg:not(.favoriteIcon_dcc7a4)) {
-    	background: url('https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png');
-    	background-color: transparent !important;
-    	background-size: cover;
-    }
+    /* color shades */
+    --pink: #f38ba8;
+    --pink-1: #d16c89;
+    --pink-2: #af4e6c;
+    --purple: #cba6f7;
+    --purple-1: #ab87d6;
+    --purple-2: #8d69b5;
+    --cyan: #74c7ec;
+    --yellow: #f9e2af;
+    --green: #a6e3a1;
+    --green-1: #87c282;
+    --green-2: #68a364;
+    --lavender: oklch(81.66% 0.091 277.31);
+    --lavender-1: oklch(71.66% 0.091 277.31);
+    --lavender-2: oklch(61.66% 0.091 277.31);
+  }
   '';
 }
