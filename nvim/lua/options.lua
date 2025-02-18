@@ -8,6 +8,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     local filename = vim.api.nvim_buf_get_name(0)
     local dirname = filename:match("(.*/)")
     os.execute(string.format("ya emit-to $(expr $ZELLIJ_PANE_ID - 1) cd %s", dirname))
-    os.execute(string.format("ya emit-to $(expr $ZELLIJ_PANE_ID - 1) hove %s", filename))
+    os.execute(string.format("ya emit-to $(expr $ZELLIJ_PANE_ID - 1) hover %s", filename))
   end
 })
