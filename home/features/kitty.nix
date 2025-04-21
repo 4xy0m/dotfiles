@@ -1,6 +1,7 @@
 {config, ...}: {
   programs.kitty = with config.colorScheme.colors; {
     enable = true;
+    settings.enable_audio_bell = false;
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 11;
