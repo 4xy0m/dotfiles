@@ -1,4 +1,7 @@
-if [[ -f $1 ]];
+if [[ -z "$1" ]];
+then
+  zellij action new-tab -n $(basename "$PWD") -c "." -l ~/.config/zellij/dev-layout-folder.kdl
+elif [[ -f $1 ]];
 then
   parent_dir=$(dirname $1)
   export FILE_TO_EDIT=$1

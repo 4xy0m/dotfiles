@@ -5,6 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nxchad.url = "github:fmway/nxchad";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,21 +16,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvchad-starter = {
-      url = "path:/home/nixos/dotfiles/nvim/";
-      flake = false;
-    };
-    nvchad4nix = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows = "nvchad-starter";
-    };
   };
 
-  outputs = {...} @ inputs: let
-    myLib = import ./lib/default.nix {inherit inputs;};
-  in
-    with myLib; {
+  outputs =
+    { ... }@inputs:
+    let
+      myLib = import ./lib/default.nix { inherit inputs; };
+    in
+    with myLib;
+    {
       nixosConfigurations = {
         laptop = mkSystem ./hosts/laptop/configuration.nix;
         laptop2 = mkSystem ./hosts/laptop2/configuration.nix;

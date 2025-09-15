@@ -1,0 +1,13 @@
+layout {
+  pane size=1 borderless=true {
+     plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+        hide_frame_for_single_pane "true"
+
+        format_center  "{tabs}"
+
+        tab_normal               "#[fg=#585B70] {index}:{name}"
+        tab_active               "#[fg=#B4BEFE,bold] {index}:{name}"
+     }
+  }
+  pane
+}

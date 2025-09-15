@@ -3,19 +3,19 @@
     yazi-rs = pkgs.fetchFromGitHub {
       owner = "yazi-rs";
       repo = "plugins";
-      rev = "8945e543ebbaa25de155b7101a917eba007252f2";
-      hash = "sha256-ko/vvItKtQSz5rbP3TMb4R1bywW2q8hj7E/A++vhVqQ=";
+      rev = "b8860253fc44e500edeb7a09db648a829084facd";
+      hash = "sha256-29K8PmBoqAMcQhDIfOVnbJt2FU4BR6k23Es9CqyEloo=";
     };
-    zide = pkgs.fetchFromGitHub {
-      owner = "josephschmitt";
-      repo = "zide";
-      rev = "98125cc4c862edd8e43ea1536d9fded397f7b461";
-      hash = "sha256-+VOm9sy0x5ihgoQpUuWeBxnuH+oiVSoWwzA8y8scyNg=";
+    yazelix = pkgs.fetchFromGitHub {
+      owner = "luccahuguet";
+      repo = "yazelix";
+      rev = "0192328ea8ccabd6035cb91426c870d1bc057914";
+      hash = "sha256-021nmyuENYPqW3PbIZaoBZ897xf/ZAcF6dLJ8kB6YoE=";
     };
     init-lua = ''
       require("git"):setup()
       require("no-status"):setup()
-      require("auto-layout")
+      require("auto-layout"):setup()
     '';
   in 
   {
@@ -23,14 +23,14 @@
   xdg.configFile."yazi/yazi.toml".source = ./config.toml;
   xdg.configFile."yazi/plugins/git.yazi/".source = "${yazi-rs}/git.yazi";
   xdg.configFile."yazi/plugins/no-status.yazi/".source = "${yazi-rs}/no-status.yazi";
-  xdg.configFile."yazi/plugins/auto-layout.yazi/main.lua".source = "${zide}/yazi/plugins/auto-layout.yazi/init.lua";
+  xdg.configFile."yazi/plugins/auto-layout.yazi/main.lua".source = "${yazelix}/yazi/plugins/auto-layout.yazi/main.lua";
   xdg.configFile."yazi/init.lua".text = init-lua;
 
   xdg.configFile."yazi-tree/yazi.toml".source = ./config-tree.toml;
   xdg.configFile."yazi-tree/keymap.toml".source = ./keymap-tree.toml;
   xdg.configFile."yazi-tree/plugins/git.yazi/".source = "${yazi-rs}/git.yazi";
   xdg.configFile."yazi-tree/plugins/no-status.yazi/".source = "${yazi-rs}/no-status.yazi";
-  xdg.configFile."yazi-tree/plugins/auto-layout.yazi/main.lua".source = "${zide}/yazi/plugins/auto-layout.yazi/init.lua";
+  xdg.configFile."yazi-tree/plugins/auto-layout.yazi/main.lua".source = "${yazelix}/yazi/plugins/auto-layout.yazi/main.lua";
   xdg.configFile."yazi-tree/init.lua".text = init-lua;
 
   home.packages = [
@@ -38,4 +38,6 @@
     (pkgs.writeShellScriptBin "yazi-pick" (builtins.readFile ./yazi-pick.sh))
     (pkgs.writeShellScriptBin "yazi-picker" (builtins.readFile ./yazi-picker.sh))
   ];
+
+  programs.zsh.shellAliases.yz = "yazi-edit";
 }

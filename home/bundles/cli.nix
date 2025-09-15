@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   myHomeManager.zsh.enable = true;
   myHomeManager.starship.enable = true;
   myHomeManager.cava.enable = true;

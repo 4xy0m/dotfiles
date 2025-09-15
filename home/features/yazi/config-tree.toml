@@ -1,7 +1,6 @@
 [opener]
 edit = [{ run = 'yazi-pick args "$@"', desc = "edit" }]
 hsplit = [{ run = 'yazi-pick hsplit $1', desc = "hsplit" }]
-vsplit = [{ run = 'yazi-pick vsplit "$1"', desc = "vsplit" }]
 
 [open]
 prepend_rules = [{ mime = "text/*", use = ["edit", "hsplit", "vsplit"] }]
