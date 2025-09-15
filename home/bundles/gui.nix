@@ -13,6 +13,7 @@
     thunderbird
     obsidian
     vial
+    # davinci-resolve
     vscode
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
