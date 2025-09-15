@@ -11,7 +11,7 @@
       "ctrl+shift+l" = "";
     };
     settings = {
-      background_opacity = "0.95";
+      background_opacity = "0.9";
       background = "#${base00}";
       foreground = "#${base05}";
       selection_background = "#${base05}";
