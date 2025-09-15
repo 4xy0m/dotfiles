@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
-    agenix.url = "github:ryantm/agenix";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     zellij-nix.url = "github:a-kenji/zellij-nix";
     firefox-addons = {

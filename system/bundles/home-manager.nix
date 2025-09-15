@@ -19,7 +19,6 @@
     });
   };
   config = {
-    myNixOS.agenix.enable = true;
     programs.hyprland.enable = true;
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.zsh;
@@ -27,10 +26,6 @@
       isNormalUser = true;
       extraGroups = ["audio" "wheel"]; # Enable ‘sudo’ for the user.
     };
-
-    environment.systemPackages = with pkgs; [
-      inputs.agenix.packages.${system}.default
-    ];
 
     home-manager = {
       extraSpecialArgs = {
