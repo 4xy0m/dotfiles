@@ -15,7 +15,7 @@
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
     ];
-    initExtra = ''
+    initContent = ''
       eval "$(starship init zsh)"
       eval "$(fzf --zsh)"
       zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
