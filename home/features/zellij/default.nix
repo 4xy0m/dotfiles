@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: {
-  programs.zellij = {enable = true; package = inputs.zellij-nix.packages.x86_64-linux.zellij-upstream; };
   programs.zellij.enableZshIntegration = true;
   xdg.configFile."zellij/plugins/zellij-autolock.wasm".source = ./zellij-autolock.wasm;
   xdg.configFile."zellij/dev-layout-folder.kdl".source = ./dev-layout-folder.kdl;
