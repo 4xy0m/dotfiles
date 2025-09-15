@@ -15,6 +15,7 @@
     vial
     # davinci-resolve
     vscode
+    cryptomator
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
