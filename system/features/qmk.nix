@@ -1,4 +1,4 @@
 {pkgs, ...}: {
-  services.udev.packages = [pkgs.via pkgs.vial];
+  services.udev.packages = [pkgs.vial];
   hardware.keyboard.qmk.enable = true;
 }
