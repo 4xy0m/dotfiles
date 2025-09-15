@@ -13,6 +13,7 @@
     thunderbird
     obsidian
     vial
+    vscode
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
