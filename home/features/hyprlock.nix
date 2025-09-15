@@ -31,7 +31,7 @@
           color = "rgb(${base05})";
           font_size = 20;
           font_family = "JetBrains Mono Nerd Font 10";
-          position = "0, -30";
+          position = "0, -50";
           halign = "center";
           valign = "center";
         }
