@@ -225,12 +225,6 @@ vim.api.nvim_create_autocmd('ModeChanged', {
     ];
     lsp = {
       servers = {
-        rust_analyzer = {
-          enable = true;
-          settings = {
-            cargo.features = "all";
-          };
-        };
         svelte.enable = true;
       };
     };
