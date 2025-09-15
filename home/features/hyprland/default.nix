@@ -15,10 +15,13 @@
           border_size = 2;
           "col.active_border" = "rgb(${base07})";
           "col.inactive_border" = "rgb(${base03})";
-
           layout = "master";
         };
-        master.new_status = "master";
+        binds.movefocus_cycles_fullscreen = true;
+        master = {
+          orientation = "center";
+          new_status = "master";
+        };
         xwayland.force_zero_scaling = true;
         animations = {
           enabled = true;
@@ -68,6 +71,7 @@
           "$mainMod, A, exec, kitty"
           "$mainMod, R, exec, launcher"
           "$mainMod, O, exec, powermenu"
+          "$mainMod, B, exec, librewolf"
           "$mainMod, C, killactive"
 
           "$mainMod, left, movefocus, l"
@@ -136,11 +140,16 @@
           ", XF86AudioNext, exec, playerctl next"
           ", XF86AudioNext, exec, playerctl stop"
         ];
-        workspace = map
-          (
-            m: lib.mkIf (m.rotating == 1) "m[${toString m.name}], layoutopt:orientation:top"
+        workspace =
+          (map
+            (m: lib.mkIf (m.rotating == 1)
+              "m[${toString m.name}], layoutopt:orientation:top"
+            )
+            config.myHomeManager.monitors
           )
-          (config.myHomeManager.monitors);
+          ++ [
+            "s[true], gapsout:300, gapsin:200"
+          ];
         monitor =
           map
           (
