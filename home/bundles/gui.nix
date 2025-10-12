@@ -16,6 +16,7 @@
     # davinci-resolve
     vscode
     cryptomator
+    figma-linux
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
