@@ -34,6 +34,9 @@
             "specialWorkspace, 1, 8, extremeEaseOut, slidefadevert -50%"
           ];
         };
+        windowrule = [
+          "idleinhibit fullscreen, title:librewolf"
+        ];
         layerrule = [
           "blur, waybar"
           "blur, rofi"
