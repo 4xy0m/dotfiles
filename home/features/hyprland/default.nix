@@ -58,9 +58,9 @@
         "$8" = "8";
         "$9" = "9";
         "$10" = "0";
-        gestures = {
-          workspace_swipe = true;
-        };
+        gesture = [
+          "3, horizontal, workspace"
+        ];
         misc = {
           disable_hyprland_logo = true;
           animate_manual_resizes = true;
