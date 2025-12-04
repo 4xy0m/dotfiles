@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   myHomeManager.kitty.enable = true;
   myHomeManager.hyprland.enable = true;
   myHomeManager.waybar.enable = true;
@@ -10,7 +10,9 @@
 
   home.packages = with pkgs; [
     material-icons
-    (callPackage ../../pkgs/icomoon-feather/default.nix {})
+    (callPackage ../../pkgs/icomoon-feather/default.nix { })
     nerd-fonts.jetbrains-mono
+    lucide
+    newcomputermodern
   ];
 }

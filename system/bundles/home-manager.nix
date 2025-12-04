@@ -33,6 +33,7 @@
         inherit myLib;
         outputs = inputs.self.outputs;
       };
+      backupFileExtension = "backup";
       users =
         builtins.mapAttrs (name: user: {...}: {
           imports = [

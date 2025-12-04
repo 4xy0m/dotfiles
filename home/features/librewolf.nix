@@ -74,4 +74,5 @@
       "x-scheme-handler/unknown" = "librewolf.desktop";
     };
   };
+  xdg.configFile."mimeapps.list".force = true;
 }

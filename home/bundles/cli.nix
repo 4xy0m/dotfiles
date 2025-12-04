@@ -11,5 +11,8 @@
     fzf
     playerctl
     fastfetch
+    zip
+    unzip
+    github-copilot-cli
   ];
 }

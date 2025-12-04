@@ -72,12 +72,12 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'DiagnosticChanged' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd('ModeChanged', {
-  group = vim.api.nvim_create_augroup('diagnostic_redraw', {}),
-  callback = function()
-    pcall(vim.diagnostic.show)
-  end
-})
+      vim.api.nvim_create_autocmd('ModeChanged', {
+        group = vim.api.nvim_create_augroup('diagnostic_redraw', {}),
+        callback = function()
+          pcall(vim.diagnostic.show)
+        end
+      })
 
         local mc = require("multicursor-nvim")
         mc.setup()
@@ -198,7 +198,7 @@ vim.api.nvim_create_autocmd('ModeChanged', {
       {
         action.__raw = ''
           function()
-            os.execute("zellij run -d right -- aider")
+            os.execute("zellij run -d right -- nix-develop-if-flake copilot")
             os.execute("zellij action resize decrease")
           end
         '';
@@ -226,73 +226,43 @@ vim.api.nvim_create_autocmd('ModeChanged', {
     lsp = {
       servers = {
         svelte.enable = true;
+        ruff.enable = true;
+        nixd.enable = true;
+        eslint.enable = true;
+        ts_ls.enable = true;
+        tinymist = {
+          enable = true;
+          config.settings.formatterMode = "typstyle";
+        }; 
+        pyrefly.enable = true;
+        rust_analyzer = {
+          enable = true;
+          settings = {
+            cargo.features = "all";
+          };
+        };
       };
     };
     plugins = {
-      lsp.servers.rust_analyzer = {
-        enable = true;
-        settings = {
-          cargo.features = "all";
-        };
-      };
+      typst-preview.enable = true;
       nvim-tree.enable = lib.mkForce false;
-      treesitter.settings.ensure_installed = lib.mkForce ["nix" "rust"];
+      treesitter.settings.ensure_installed = lib.mkForce ["nix" "rust" "jinja"];
       zellij-nav.enable = true;
       flash.enable = true;
       nvim-surround.enable = true;
       noice = { enable = true; settings.lsp = { hover.enabled = false; signature.enabled = false; }; };
-      blink-cmp.luaConfig.content = lib.mkForce ''
-        dofile(vim.g.base46_cache .. "blink")
-require("blink-cmp").setup({  
-  cmdline = { enabled = true },
-  appearance = { nerd_font_variant = "normal" },
-  fuzzy = { implementation = "prefer_rust" },
-  sources = { default = { "lsp", "snippets", "buffer", "path" } },
-
-  keymap = {
-    preset = "default",
-    ["<CR>"] = { "accept", "fallback" },
-    ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-    ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-    ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-    ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-  },
-
-  completion = {
-    ghost_text = { enabled = true },
-    documentation = {
-      auto_show = true,
-      auto_show_delay_ms = 200,
-      window = { border = "single" },
-    },
-
-    -- from nvchad/ui plugin
-    -- exporting the ui config of nvchad blink menu
-    -- helps non nvchad users
-    menu = require("nvchad.blink").menu,
-  },        
-})
-      '';
-      cmp = {
-        enable = false;
-        autoEnableSources = true;
-        settings.sources = [
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "buffer"; }
-        ];
-        settings.mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-e>" = "cmp.mapping.close()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+      none-ls = {
+        enable = true;
+        sources = {
+          formatting = {
+            nixfmt.enable = true;
+            prettier.enable = true;
+            djlint.enable = true;
+          };
+          diagnostics = {
+            djlint.enable = true;
+          };
         };
-        luaConfig.pre = ''
-          dofile(vim.g.base46_cache .. "cmp")
-        '';
       };
     };
   };
