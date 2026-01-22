@@ -35,12 +35,23 @@
           ];
         };
         windowrule = [
-          "idleinhibit fullscreen, title:librewolf"
+          {
+            name = "idleinhibit-fullscreen";
+            "match:class" = ".*";
+            "match:fullscreen" = true;
+          }
         ];
         layerrule = [
-          "blur, waybar"
-          "blur, rofi"
-          "ignorealpha 0.5, rofi"
+          {
+            name = "blur-waybar";
+            "match:namespace" = "waybar";
+            blur = true;
+          }
+          {
+            name = "blur-rofi";
+            "match:namespace" = "rofi";
+            blur = true;
+          }
         ];
         exec-once = [
           "waybar"

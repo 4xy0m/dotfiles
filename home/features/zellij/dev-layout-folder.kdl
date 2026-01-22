@@ -13,18 +13,26 @@ layout {
     tab hide_floating_panes=true {
         floating_panes {
             lazygit
+            gh_dash
         }
         ui
     }
 
     // TEMPLATES
     pane_template name="new_pane" {
-        command "nix-develop-if-flake"
-        args "zsh"
+        command "zsh"
     }
 
     pane_template name="lazygit" {
         command "lazygit"
+        x "10%"
+        y "5%"
+        width "80%"
+        height "80%"
+    }
+
+    pane_template name="gh_dash" {
+        command "gh-dash"
         x "10%"
         y "5%"
         width "80%"
@@ -36,8 +44,7 @@ layout {
     }
 
     pane_template name="editor" {
-        command "nix-develop-if-flake"
-        args "nvim"
+        command "nvim-flake-wrapper"
     }
 
     pane_template name="compact_bar" {

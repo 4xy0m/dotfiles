@@ -1,5 +1,5 @@
-{config, ...}: {
-  imports = [./wallpaper.nix];
+{ config, ... }: {
+  imports = [ ./wallpaper.nix ];
 
   xdg.configFile."wallpapers/" = {
     source = ./wallpapers;
@@ -9,8 +9,10 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["~/.config/wallpapers/${config.myHomeManager.wallpaper}"];
-      wallpaper = [", ~/.config/wallpapers/${config.myHomeManager.wallpaper}"];
+      wallpaper = [{
+        monitor = "";
+        path = [ "~/.config/wallpapers/${config.myHomeManager.wallpaper}" ];
+      }];
     };
   };
 }

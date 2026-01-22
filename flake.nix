@@ -9,6 +9,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nxchad.url = "github:fmway/nxchad";
     nxchad.inputs.nixpkgs.follows = "nixpkgs";
+    llm-agents.url = "github:numtide/llm-agents.nix";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

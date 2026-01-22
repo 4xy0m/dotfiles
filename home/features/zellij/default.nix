@@ -5,11 +5,15 @@
   inputs,
   ...
 }: {
-  home.packages = [
-    (pkgs.writeShellScriptBin "nix-develop-if-flake" (builtins.readFile ./nix-develop-if-flake.sh))
-  ];
   programs.zellij = {enable = true; };
   programs.zellij.enableZshIntegration = true;
+  home.packages = [
+    (pkgs.writeShellApplication {
+      name = "nvim-flake-wrapper";
+      runtimeInputs = with pkgs; [ zsh direnv nix ];
+      text = builtins.readFile ./nvim-flake-wrapper.sh;
+    })
+  ];
   xdg.configFile."zellij/plugins/zellij-autolock.wasm".source = ./zellij-autolock.wasm;
   xdg.configFile."zellij/plugins/zjframes.wasm".source = ./zjframes.wasm;
   xdg.configFile."zellij/plugins/zjstatus.wasm".source = ./zjstatus.wasm;

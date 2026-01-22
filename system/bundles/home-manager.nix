@@ -24,7 +24,7 @@
     users.defaultUserShell = pkgs.zsh;
     users.users.nixos = {
       isNormalUser = true;
-      extraGroups = ["audio" "wheel"]; # Enable ‘sudo’ for the user.
+      extraGroups = ["audio" "wheel" ]; # Enable ‘sudo’ for the user.
     };
 
     home-manager = {

@@ -1,5 +1,5 @@
 [opener]
-edit = [{ run = 'yazi-pick args "$@"', desc = "edit" }]
+edit = [{ run = 'yazi-pick edit "$@"', desc = "edit" }]
 hsplit = [{ run = 'yazi-pick hsplit $1', desc = "hsplit" }]
 
 [open]
