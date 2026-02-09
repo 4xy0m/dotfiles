@@ -4,7 +4,10 @@
     package =
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
     settings = {
-      plugin = [ "opencode-antigravity-auth@beta" ];
+      plugin = [
+        "opencode-antigravity-auth@beta"
+        "opencode-anthropic-auth@latest"
+      ];
       provider = {
         google = {
           models = {
