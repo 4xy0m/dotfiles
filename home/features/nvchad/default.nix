@@ -233,7 +233,7 @@
           enable = true;
           config.settings.formatterMode = "typstyle";
         };
-        pyrefly.enable = true;
+        ty.enable = true;
         rust_analyzer = {
           enable = true;
           settings = { cargo.features = "all"; };
