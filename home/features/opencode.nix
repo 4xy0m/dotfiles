@@ -6,6 +6,7 @@
     settings = {
       plugin = [
         "opencode-anthropic-auth@latest"
+        "oh-my-opencode@latest"
       ];
     };
   };
