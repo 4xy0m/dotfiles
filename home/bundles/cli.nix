@@ -15,9 +15,5 @@
     fastfetch
     zip
     unzip
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.copilot-cli
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
   ];
 }
