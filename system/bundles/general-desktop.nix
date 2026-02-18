@@ -6,7 +6,7 @@
   myNixOS.pipewire.enable = true;
   myNixOS.syncthing.enable = true;
 
-  networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   time.timeZone = "CET";
 }
