@@ -82,7 +82,7 @@
           touchpad.disable_while_typing = false;
         };
         bind = [
-          "$mainMod, A, exec, kitty"
+          "$mainMod, A, exec, ghostty"
           "$mainMod, R, exec, launcher"
           "$mainMod, O, exec, powermenu"
           "$mainMod, B, exec, librewolf"

@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  myHomeManager.kitty.enable = true;
+  myHomeManager.ghostty.enable = true;
   myHomeManager.hyprland.enable = true;
   myHomeManager.waybar.enable = true;
   myHomeManager.hyprlock.enable = true;
