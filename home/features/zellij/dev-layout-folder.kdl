@@ -2,7 +2,7 @@ layout {
     pane_template name="ui" {
         compact_bar size=1 borderless=true
         pane split_direction="vertical" {
-            filepicker size=40 name="picker"
+            filepicker size=__FILEPICKER_COLUMNS__ name="picker"
             pane split_direction="horizontal" {
                 editor size="75%" focus=true
                 new_pane

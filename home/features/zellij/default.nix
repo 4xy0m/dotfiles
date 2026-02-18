@@ -4,7 +4,18 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+let
+  primaryMonitor = builtins.head config.myHomeManager.monitors;
+  baseMonitorWidth = 3440;
+  baseSidebarColumns = 40;
+  rawSidebarColumns = builtins.div (primaryMonitor.width * baseSidebarColumns) baseMonitorWidth;
+  sidebarColumns = lib.max 32 (lib.min 60 rawSidebarColumns);
+  devLayoutFolderText = builtins.replaceStrings
+    ["__FILEPICKER_COLUMNS__"]
+    [(toString sidebarColumns)]
+    (builtins.readFile ./dev-layout-folder.kdl);
+in {
   programs.zellij = {enable = true; };
   programs.zellij.enableZshIntegration = true;
   home.packages = [
@@ -17,7 +28,7 @@
   xdg.configFile."zellij/plugins/zellij-autolock.wasm".source = ./zellij-autolock.wasm;
   xdg.configFile."zellij/plugins/zjframes.wasm".source = ./zjframes.wasm;
   xdg.configFile."zellij/plugins/zjstatus.wasm".source = ./zjstatus.wasm;
-  xdg.configFile."zellij/dev-layout-folder.kdl".source = ./dev-layout-folder.kdl;
+  xdg.configFile."zellij/dev-layout-folder.kdl".text = devLayoutFolderText;
   xdg.configFile."zellij/dev-layout-file.kdl".source = ./dev-layout-file.kdl;
   xdg.configFile."zellij/layouts/default.kdl".source = ./default.kdl;
   xdg.configFile."zellij/config.kdl".text = with config.colorScheme.palette; ''
