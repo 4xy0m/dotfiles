@@ -86,6 +86,7 @@
           "$mainMod, R, exec, launcher"
           "$mainMod, O, exec, powermenu"
           "$mainMod, B, exec, librewolf"
+          "$mainMod, P, exec, hyprquickframe"
           "$mainMod, C, killactive"
 
           "$mainMod, left, movefocus, l"

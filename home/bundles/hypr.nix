@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   myHomeManager.ghostty.enable = true;
   myHomeManager.hyprland.enable = true;
   myHomeManager.waybar.enable = true;
@@ -15,5 +15,6 @@
     nerd-fonts.jetbrains-mono
     lucide
     newcomputermodern
+    inputs.HyprQuickFrame.packages.${pkgs.system}.default
   ];
 }
