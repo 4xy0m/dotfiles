@@ -48,8 +48,8 @@
             blur = true;
           }
           {
-            name = "blur-rofi";
-            "match:namespace" = "rofi";
+            name = "blur-vicinae";
+            "match:namespace" = "vicinae";
             blur = true;
           }
         ];

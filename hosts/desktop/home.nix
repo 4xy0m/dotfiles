@@ -48,10 +48,6 @@
   ];
 
   myHomeManager.rofi = {
-    launcher = {
-      font = "JetBrainsMono Nerd Font 12";
-      width = 700;
-    };
     powermenu = {
       box-margin = "531px 1070px";
       element-padding = "88px 0px";

@@ -2,7 +2,7 @@
   pkgs,
   ...
 }: {
-  imports = [./powermenu/default.nix ./launcher/default.nix];
+  imports = [./powermenu/default.nix];
   home.packages = [
     pkgs.rofi
   ];

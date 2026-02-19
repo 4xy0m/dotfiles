@@ -5,6 +5,7 @@
   myHomeManager.hyprlock.enable = true;
   myHomeManager.hyprpaper.enable = true;
   myHomeManager.hypridle.enable = true;
+  myHomeManager.vicinae.enable = true;
   myHomeManager.rofi.enable = true;
   myHomeManager.dunst.enable = true;
 
