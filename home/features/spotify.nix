@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: 
@@ -16,17 +15,4 @@
     settings.theme = "Catppuccin-mocha";
   };
   xdg.configFile."spotify-player/theme.toml".source = "${catppuccin-spotify-player}/theme.toml";
-  services.spotifyd = {
-    enable = true;
-    settings.global = {
-      autoplay = true;
-      backend = "pulseaudio";
-      bitrate = 320;
-      cache_path = "${config.xdg.cacheHome}/spotifyd";
-      device_type = "computer";
-      initial_volume = "100";
-      use_mpris = true;
-      volume_normalisation = false;
-    };
-  };
 }

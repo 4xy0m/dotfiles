@@ -47,15 +47,6 @@
     }
   ];
 
-  myHomeManager.rofi = {
-    powermenu = {
-      box-margin = "531px 1070px";
-      element-padding = "88px 0px";
-      element-font = "feather 33";
-      font = "JetBrainsMono Nerd Font 11";
-    };
-  };
-
   home.stateVersion = "24.05";
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;

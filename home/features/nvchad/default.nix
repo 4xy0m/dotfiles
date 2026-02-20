@@ -132,6 +132,37 @@
               hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
               hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
 
+          local function focused_pane_width_ratio()
+            local layout = vim.fn.system("zellij action dump-layout")
+            if vim.v.shell_error ~= 0 then
+              return nil
+            end
+
+            local focused_line = layout:match("[^\n]*pane[^\n]*focus=true[^\n]*")
+            if not focused_line then
+              return nil
+            end
+
+            local percent_size = focused_line:match('size="([0-9]+)%%"')
+            if percent_size then
+              return tonumber(percent_size) / 100
+            end
+
+            if focused_line:match("size=[0-9]+") then
+              return nil
+            end
+
+            return 1
+          end
+
+          local function is_effectively_fullscreen()
+            local ratio = focused_pane_width_ratio()
+            if not ratio then
+              return false
+            end
+            return ratio >= 0.9
+          end
+
           -- Credit: https://github.com/swaits/zellij-nav.nvim
           local function nav(short_direction, direction, action, resize, close_after)
             -- Use "move-focus" if action is nil.
@@ -151,7 +182,7 @@
             -- if the window ID didn't change, then we didn't switch
             if cur_winnr == new_winnr then
               -- if resize then decrease current pane
-              if resize then
+              if resize and not is_effectively_fullscreen() then
                 vim.fn.system("zellij action resize decrease")
                 if close_after then
                   vim.api.nvim_create_autocmd("FocusGained", {

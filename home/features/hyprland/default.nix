@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }: {
@@ -8,19 +9,17 @@
   config = {
     wayland.windowManager.hyprland = with config.colorScheme.palette; {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling];
       settings = {
         general = {
-          gaps_in = 6;
+          gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
           "col.active_border" = "rgb(${base07})";
           "col.inactive_border" = "rgb(${base03})";
-          layout = "master";
-        };
-        binds.movefocus_cycles_fullscreen = true;
-        master = {
-          orientation = "center";
-          new_status = "master";
+          layout = "scrolling";
         };
         xwayland.force_zero_scaling = true;
         animations = {
@@ -30,7 +29,7 @@
             "fade,       1, 5, default"
             "windows,    1, 5, extremeEaseOut, popin 75%"
             "windowsOut, 1, 5, default,        popin 75%"
-            "workspaces, 1, 4, extremeEaseOut"
+            "workspaces, 1, 4, extremeEaseOut, slidevert"
             "specialWorkspace, 1, 8, extremeEaseOut, slidefadevert -50%"
           ];
         };
@@ -43,8 +42,9 @@
         ];
         layerrule = [
           {
-            name = "blur-waybar";
-            "match:namespace" = "waybar";
+            name = "blur-noctalia";
+            "match:namespace" = "noctalia-background-.*$";
+            ignore_alpha = 0.5;
             blur = true;
           }
           {
@@ -54,7 +54,7 @@
           }
         ];
         exec-once = [
-          "waybar"
+          "noctalia-shell"
           "${pkgs.hypridle}/bin/hypridle"
           "hyprctl setcursor ${config.myHomeManager.cursor.name} ${toString config.myHomeManager.cursor.size}"
         ];
@@ -70,7 +70,9 @@
         "$9" = "9";
         "$10" = "0";
         gesture = [
-          "3, horizontal, workspace"
+          "3, vertical, workspace"
+          "3, left, dispatcher, layoutmsg, focus l"
+          "3, right, dispatcher, layoutmsg, focus r"
         ];
         misc = {
           disable_hyprland_logo = true;
@@ -79,30 +81,36 @@
         };
         input = {
           kb_layout = "us,us";
+          kb_variant = "colemak_dh";
           touchpad.disable_while_typing = false;
+        };
+        plugin.hyprscrolling = {
+          fullscreen_on_one_column = true;
+          follow_focus = true;
+          focus_fit_method = 1;
         };
         bind = [
           "$mainMod, A, exec, ghostty"
-          "$mainMod, R, exec, launcher"
-          "$mainMod, O, exec, powermenu"
+          "$mainMod, R, exec, noctalia-shell ipc call launcher toggle"
+          "$mainMod, O, exec, noctalia-shell ipc call sessionMenu toggle"
           "$mainMod, B, exec, librewolf"
           "$mainMod, P, exec, hyprquickframe"
           "$mainMod, C, killactive"
 
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, down, movefocus, d"
-          "$mainMod, up, movefocus, u"
+          "$mainMod, left, layoutmsg, focus l"
+          "$mainMod, right, layoutmsg, focus r"
+          "$mainMod, down, layoutmsg, focus d"
+          "$mainMod, up, layoutmsg, focus u"
 
-          "$mainMod CONTROL, left, movewindow, l"
-          "$mainMod CONTROL, right, movewindow, r"
-          "$mainMod CONTROL, down, movewindow, d"
-          "$mainMod CONTROL, up, movewindow, u"
+          "$mainMod CONTROL, left, layoutmsg, movewindowto l"
+          "$mainMod CONTROL, right, layoutmsg, movewindowto r"
+          "$mainMod CONTROL, down, layoutmsg, movewindowto d"
+          "$mainMod CONTROL, up, layoutmsg, movewindowto u"
 
-          "$mainMod SHIFT, left, swapwindow, l"
-          "$mainMod SHIFT, right, swapwindow, r"
-          "$mainMod SHIFT, down, swapwindow, d"
-          "$mainMod SHIFT, up, swapwindow, u"
+          "$mainMod SHIFT, left, layoutmsg, swapcol l"
+          "$mainMod SHIFT, right, layoutmsg, swapcol r"
+          "$mainMod SHIFT, down, layoutmsg, movewindowto d"
+          "$mainMod SHIFT, up, layoutmsg, movewindowto u"
 
           "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
@@ -110,9 +118,12 @@
           "$mainMod, V, togglefloating"
           "$mainMod, V, centerwindow"
           "$mainMod, V, resizeactive, exact 50% 50%"
-          "$mainMod, G, fullscreen, 1"
+          "$mainMod, G, layoutmsg, fit active"
           "$mainMod SHIFT, G, fullscreen"
           "$mainMod, W, togglesplit"
+
+          "$mainMod, equal, layoutmsg, colresize +conf"
+          "$mainMod, minus, layoutmsg, colresize -conf"
 
           "$mainMod, $1, focusworkspaceoncurrentmonitor, 1"
           "$mainMod, $2, focusworkspaceoncurrentmonitor, 2"
@@ -136,11 +147,11 @@
           "$mainMod SHIFT, $9, movetoworkspace, 9"
           "$mainMod SHIFT, $10, movetoworkspace, 10"
 
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod, mouse_down, layoutmsg, move +col"
+          "$mainMod, mouse_up, layoutmsg, move -col"
 
-          "$mainMod, TAB, workspace, e+1"
-          "$mainMod SHIFT, TAB, workspace, e-1"
+          "$mainMod, TAB, layoutmsg, move +col"
+          "$mainMod SHIFT, TAB, layoutmsg, move -col"
         ];
         bindm = [
           "$mainMod, mouse:272, movewindow"
@@ -161,10 +172,7 @@
               "m[${toString m.name}], layoutopt:orientation:top"
             )
             config.myHomeManager.monitors
-          )
-          ++ [
-            "s[true], gapsout:300, gapsin:200"
-          ];
+          );
         monitor =
           map
           (

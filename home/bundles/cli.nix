@@ -15,5 +15,6 @@
     fastfetch
     zip
     unzip
+    fd
   ];
 }
