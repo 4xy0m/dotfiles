@@ -31,14 +31,6 @@ layout {
         height "80%"
     }
 
-    pane_template name="gh_dash" {
-        command "gh-dash"
-        x "10%"
-        y "5%"
-        width "80%"
-        height "80%"
-    }
-
     pane_template name="filepicker" {
         command "yazi-picker"
     }
