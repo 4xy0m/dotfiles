@@ -53,8 +53,21 @@
     };
 
     settings = {
-      osd.location = "bottom_center";
+      notifications = {
+        monitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
+      };
+      osd = {
+        location = "bottom_center";
+        monitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
+      };
       bar = {
+        monitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
         position = "top";
         density = "default";
         floating = false;
@@ -128,6 +141,9 @@
       };
 
       general = {
+        lockScreenMonitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
         dimmerOpacity = 0.55;
         radiusRatio = 1.0;
         iRadiusRatio = 1.0;
