@@ -17,6 +17,7 @@
     vscode
     cryptomator
     figma-linux
+    readest
   ];
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
