@@ -288,7 +288,17 @@
       obsidian = {
         enable = true;
         lazyLoad.enable = true;
-        lazyLoad.settings.event = "InsertEnter";
+        lazyLoad.settings.enabled.__raw = ''
+          function()
+            local notes = vim.fn.expand("~/notes")
+            local cwd = vim.fn.getcwd()
+            if cwd == notes then
+              require('lz.n').trigger_load('blink.cmp')
+              return true
+            end
+            return false
+          end
+        '';
         settings = {
           legacy_commands = false;
           completion = {
