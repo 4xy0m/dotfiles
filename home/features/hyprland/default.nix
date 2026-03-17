@@ -11,7 +11,6 @@
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling];
       settings = {
         general = {
           gaps_in = 5;
@@ -33,23 +32,11 @@
             "specialWorkspace, 1, 8, extremeEaseOut, slidefadevert -50%"
           ];
         };
-        windowrule = [
-          {
-            name = "idleinhibit-fullscreen";
-            "match:class" = ".*";
-            "match:fullscreen" = true;
-          }
-        ];
         layerrule = [
           {
             name = "blur-noctalia";
             "match:namespace" = "noctalia-background-.*$";
             ignore_alpha = 0.5;
-            blur = true;
-          }
-          {
-            name = "blur-vicinae";
-            "match:namespace" = "vicinae";
             blur = true;
           }
         ];
@@ -81,7 +68,6 @@
         };
         input = {
           kb_layout = "us,us";
-          kb_variant = "colemak_dh";
           touchpad.disable_while_typing = false;
         };
         plugin.hyprscrolling = {
@@ -120,9 +106,8 @@
           "$mainMod, V, resizeactive, exact 50% 50%"
           "$mainMod, G, layoutmsg, fit active"
           "$mainMod SHIFT, G, fullscreen"
-          "$mainMod, W, togglesplit"
 
-          "$mainMod, equal, layoutmsg, colresize +conf"
+          "$mainMod SHIFT, equal, layoutmsg, colresize +conf"
           "$mainMod, minus, layoutmsg, colresize -conf"
 
           "$mainMod, $1, focusworkspaceoncurrentmonitor, 1"
@@ -150,8 +135,7 @@
           "$mainMod, mouse_down, layoutmsg, move +col"
           "$mainMod, mouse_up, layoutmsg, move -col"
 
-          "$mainMod, TAB, layoutmsg, move +col"
-          "$mainMod SHIFT, TAB, layoutmsg, move -col"
+          "$mainMod, TAB, workspace, e+1"
         ];
         bindm = [
           "$mainMod, mouse:272, movewindow"
@@ -169,7 +153,7 @@
         workspace =
           (map
             (m: lib.mkIf (m.rotating == 1)
-              "m[${toString m.name}], layoutopt:orientation:top"
+              "m[${toString m.name}], layoutopt:direction:down"
             )
             config.myHomeManager.monitors
           );
