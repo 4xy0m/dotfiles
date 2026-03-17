@@ -13,7 +13,6 @@ layout {
     tab hide_floating_panes=true {
         floating_panes {
             lazygit
-            gh_dash
         }
         ui
     }
