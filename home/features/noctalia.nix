@@ -20,8 +20,7 @@
 
   programs.noctalia-shell = with config.colorScheme.palette; {
     enable = true;
-    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
+    package = pkgs.noctalia-shell;
     plugins = {
       version = 2;
       sources = [
