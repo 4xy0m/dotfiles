@@ -1,4 +1,9 @@
-{ inputs, lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -12,7 +17,9 @@
       transparency = true;
     };
     diagnostic.settings = {
-      virtual_lines = { current_line = true; };
+      virtual_lines = {
+        current_line = true;
+      };
       virtual_text = true;
       update_in_insert = false;
       underline = true;
@@ -212,7 +219,11 @@
       {
         action = "<cmd>lua require('flash').jump()<cr>";
         key = "s";
-        mode = [ "n" "x" "o" ];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
       }
       {
         action = "<C-d>zz";
@@ -267,7 +278,9 @@
         ty.enable = true;
         rust_analyzer = {
           enable = true;
-          settings = { cargo.features = "all"; };
+          settings = {
+            cargo.features = "all";
+          };
         };
       };
     };
@@ -282,32 +295,33 @@
             nvim_cmp = false;
             blink = true;
           };
-          workspaces = [{
-            name = "notes";
-            path = "~/notes/";
-          }];
+          workspaces = [
+            {
+              name = "notes";
+              path = "~/notes/";
+            }
+          ];
           templates.folder = "templates";
         };
       };
-      treesitter.settings.ensure_installed = lib.mkForce [];
-      treesitter.grammarPackages =
-        with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          bash
-          json
-          lua
-          make
-          markdown
-          nix
-          regex
-          toml
-          vim
-          vimdoc
-          xml
-          yaml
-          rust
-          python
-          toml
-        ];
+      treesitter.settings.ensure_installed = lib.mkForce [ ];
+      treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        bash
+        json
+        lua
+        make
+        markdown
+        nix
+        regex
+        toml
+        vim
+        vimdoc
+        xml
+        yaml
+        rust
+        python
+        toml
+      ];
       markdown-preview.enable = true;
       typst-preview.enable = true;
       nvim-tree.enable = lib.mkForce false;
@@ -329,7 +343,9 @@
             prettier.enable = true;
             djlint.enable = true;
           };
-          diagnostics = { djlint.enable = true; };
+          diagnostics = {
+            djlint.enable = true;
+          };
         };
       };
     };
