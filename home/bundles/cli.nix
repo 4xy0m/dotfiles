@@ -16,5 +16,7 @@
     zip
     unzip
     fd
+    sd
+    jq
   ];
 }
