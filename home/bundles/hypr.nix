@@ -3,7 +3,6 @@
   myHomeManager.hyprland.enable = true;
   myHomeManager.hyprlock.enable = true;
   myHomeManager.hypridle.enable = true;
-  myHomeManager.vicinae.enable = true;
   myHomeManager.noctalia.enable = true;
 
   home.packages = with pkgs; [
