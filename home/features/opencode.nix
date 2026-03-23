@@ -6,7 +6,7 @@
     settings = {
       theme = "system";
       plugin = [
-        "opencode-anthropic-auth@latest"
+        "opencode-claude-auth"
         "oh-my-opencode-slim@latest"
       ];
     };
