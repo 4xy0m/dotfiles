@@ -12,7 +12,10 @@
   in {
   programs.spotify-player = {
     enable = true;
-    settings.theme = "Catppuccin-mocha";
+    settings = {
+      theme = "Catppuccin-mocha";
+      enable_relative_line_number = false;
+    };
   };
   xdg.configFile."spotify-player/theme.toml".source = "${catppuccin-spotify-player}/theme.toml";
 }
