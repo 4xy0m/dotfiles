@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     gnome-calculator
-    nautilus
+    # nautilus
     pavucontrol
     thunderbird
     obsidian
@@ -18,6 +18,18 @@
     cryptomator
     figma-linux
     readest
+    localsend
+    # (texlive.combine { inherit (texlive) scheme-small framed; })
+    (rstudioWrapper.override {
+      packages = with rPackages; [
+        ggplot2
+        dplyr
+        xts
+        rmarkdown
+        pandoc
+      ];
+    })
   ];
+
   nixpkgs.config.allowUnfreePredicate = _: true;
 }
