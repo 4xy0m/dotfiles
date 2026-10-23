@@ -9,10 +9,18 @@
   myNixOS.syncthing.enable = true;
   myNixOS.tailscale.enable = true;
 
+  networking.extraHosts = ''
+    192.168.1.1 meteor.arcadyan.com
+  '';
+
+  networking.firewall.enable = false;
   networking.wireless.iwd.enable = true;
   nix.settings = {
     accept-flake-config = true;
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [
       "root"
       "@wheel"
