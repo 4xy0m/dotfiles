@@ -6,8 +6,7 @@
     settings = {
       theme = "system";
       plugin = [
-        "opencode-claude-auth"
-        "oh-my-opencode-slim@latest"
+        "oh-my-opencode-slim"
       ];
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   myHomeManager.zsh.enable = true;
   myHomeManager.starship.enable = true;
@@ -18,6 +18,5 @@
     fd
     sd
     jq
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
   ];
 }
