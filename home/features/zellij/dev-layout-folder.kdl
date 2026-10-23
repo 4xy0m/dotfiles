@@ -35,7 +35,7 @@ layout {
     }
 
     pane_template name="editor" {
-        command "nvim-flake-wrapper"
+        command "nvim"
     }
 
     pane_template name="compact_bar" {
