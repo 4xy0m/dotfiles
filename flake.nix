@@ -4,9 +4,11 @@
   nixConfig = {
     extra-substituters = [
       "https://hyprland.cachix.org"
+      "https://noctalia.cachix.org"
     ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
   };
 
@@ -16,20 +18,27 @@
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    nxchad.url = "github:fmway/nxchad";
-    nxchad.inputs.nixpkgs.follows = "nixpkgs";
+    xdg-desktop-portal-termfilepickers.url = "github:guekka/xdg-desktop-portal-termfilepickers";
+    nxchad = {
+      url = "github:fmway/nxchad";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixvim.follows = "nixvim";
+        flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+        fmway-modules.url = "github:fmway/modules";
+      };
+    };
     llm-agents.url = "github:numtide/llm-agents.nix";
     hyprland.url = "github:hyprwm/Hyprland";
     HyprQuickFrame = {
       url = "github:Ronin-CK/HyprQuickFrame";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/cachix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.noctalia-qs.follows = "noctalia-qs";
     };
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
