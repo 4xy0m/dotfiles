@@ -1,213 +1,137 @@
 {
-  pkgs,
-  config,
   inputs,
+  config,
   ...
 }:
 {
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
+
   xdg.configFile."wallpapers/" = {
     source = ./hyprpaper/wallpapers;
     recursive = true;
   };
 
-  home.file.".cache/noctalia/wallpapers.json".text = builtins.toJSON {
-    defaultWallpaper = "${config.home.homeDirectory}/.config/wallpapers/${config.myHomeManager.wallpaper}";
-  };
-
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-
-  programs.noctalia-shell = with config.colorScheme.palette; {
+  programs.noctalia = {
     enable = true;
-    package = pkgs.noctalia-shell;
-    plugins = {
-      version = 2;
-      sources = [
-        {
-          name = "Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-          enabled = true;
-        }
-      ];
-      states = {
-        "privacy-indicator" = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        "kaomoji-provider" = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-      };
-    };
-
-    pluginSettings = {
-      "privacy-indicator" = {
-        hideInactive = true;
-        removeMargins = false;
-        activeColor = "primary";
-        inactiveColor = "none";
-      };
-    };
 
     settings = {
-      notifications = {
-        monitors = [
-          (builtins.head config.myHomeManager.monitors).name
-        ];
-      };
-      osd = {
-        location = "bottom_center";
-        monitors = [
-          (builtins.head config.myHomeManager.monitors).name
-        ];
-      };
-      bar = {
-        monitors = [
-          (builtins.head config.myHomeManager.monitors).name
-        ];
-        position = "top";
-        density = "default";
-        floating = false;
-        marginVertical = 0;
-        marginHorizontal = 0;
-        showCapsule = true;
-        capsuleOpacity = 1;
-        capsuleColorKey = "none";
-        showOutline = false;
-        backgroundOpacity = 0.55;
-        widgets = {
-          left = [
-            {
-              id = "Launcher";
-            }
-            {
-              id = "SystemMonitor";
-              compactMode = false;
-              useMonospaceFont = true;
-              usePadding = true;
-              showCpuUsage = true;
-              showCpuTemp = true;
-              showMemoryUsage = true;
-              showMemoryAsPercent = true;
-              showCpuFreq = false;
-              showGpuTemp = false;
-              showLoadAverage = false;
-              showSwapUsage = false;
-              showNetworkStats = false;
-              showDiskUsage = false;
-              showDiskUsageAsPercent = false;
-              showDiskAvailable = false;
-            }
-            {
-              id = "Tray";
-              drawerEnabled = false;
-            }
-            { id = "NotificationHistory"; }
-            {
-              id = "plugin:privacy-indicator";
-            }
-          ];
-          center = [
-            { id = "Workspace"; }
-          ];
-          right = [
-            {
-              id = "Volume";
-              displayMode = "alwaysShow";
-            }
-            {
-              id = "Brightness";
-              displayMode = "alwaysShow";
-            }
-            {
-              id = "Battery";
-              displayMode = "icon-always";
-            }
-            { id = "Clock"; }
-            { id = "SessionMenu"; }
-          ];
-        };
-      };
-
-      ui = {
-        fontDefault = "JetBrainsMono Nerd Font";
-        fontDefaultScale = 1.0;
-        panelBackgroundOpacity = 0.55;
-        panelsAttachedToBar = true;
-        tooltipsEnabled = true;
-      };
-
-      general = {
-        lockScreenMonitors = [
-          (builtins.head config.myHomeManager.monitors).name
-        ];
-        dimmerOpacity = 0.55;
-        radiusRatio = 1.0;
-        iRadiusRatio = 1.0;
-        animationSpeed = 1.0;
-        lockScreenAnimations = true;
-        lockScreenBlur = 1;
-      };
-
-      colorSchemes = {
-        useWallpaperColors = false;
-        darkMode = true;
-      };
-
-      dock.enabled = false;
-
-      sessionMenu = {
-        countdownDuration = false;
-        showHeader = false;
-        showKeybinds = false;
-        powerOptions = [
-          {
-            action = "lock";
-            enabled = true;
-          }
-          {
-            action = "suspend";
-            enabled = true;
-          }
-          {
-            action = "logout";
-            enabled = true;
-          }
-          {
-            action = "reboot";
-            enabled = true;
-          }
-          {
-            action = "shutdown";
-            enabled = true;
-          }
-        ];
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Catppuccin";
       };
 
       wallpaper = {
         enabled = true;
+        default.path = "${config.home.homeDirectory}/.config/wallpapers/${config.myHomeManager.wallpaper}";
       };
-    };
 
-    colors = {
-      mPrimary = "#${base0E}";
-      mOnPrimary = "#${base00}";
-      mSecondary = "#${base0D}";
-      mOnSecondary = "#${base00}";
-      mTertiary = "#${base0C}";
-      mOnTertiary = "#${base00}";
-      mError = "#${base08}";
-      mOnError = "#${base00}";
-      mSurface = "#${base01}";
-      mOnSurface = "#${base05}";
-      mSurfaceVariant = "#${base02}";
-      mOnSurfaceVariant = "#${base04}";
-      mOutline = "#${base03}";
-      mShadow = "#${base00}";
-      mHover = "#${base04}";
-      mOnHover = "#${base00}";
+      shell.font_family = "JetBrainsMono Nerd Font";
+
+      osd = {
+        position = "bottom_center";
+        monitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
+      };
+
+      notification.monitors = [
+        (builtins.head config.myHomeManager.monitors).name
+      ];
+
+      lockscreen = {
+        monitors = [
+          (builtins.head config.myHomeManager.monitors).name
+        ];
+      };
+
+      bar.default.enabled = false;
+      bar.default.monitor.main = {
+        enabled = true;
+        match = (builtins.head config.myHomeManager.monitors).name;
+        background_opacity = 0.55;
+        margin_ends = 0;
+        capsule = true;
+        border_width = 0.0;
+        padding = 14;
+        start = [
+          "launcher"
+          "cpu"
+          "cpu_temp"
+          "memory"
+          "gpu_temp"
+          "tray"
+          "notifications"
+          "privacy"
+        ];
+        center = [ "workspaces" ];
+        end = [
+          "network"
+          "volume"
+          "brightness"
+          "battery"
+          "clock"
+          "session"
+        ];
+      };
+
+      widget = {
+        launcher = { };
+
+        cpu = {
+          type = "sysmon";
+          stat = "cpu_usage";
+          visualization = "gauge";
+        };
+        cpu_temp = {
+          type = "sysmon";
+          stat = "cpu_temp";
+        };
+        memory = {
+          type = "sysmon";
+          stat = "ram_pct";
+        };
+        gpu_temp = {
+          type = "sysmon";
+          stat = "gpu_temp";
+        };
+
+        tray = {
+          drawer = false;
+          hide_passive = true;
+        };
+
+        notifications = {
+          hide_when_no_unread = false;
+        };
+
+        volume = {
+          show_label = true;
+          device = "output";
+        };
+
+        brightness = {
+          show_label = true;
+        };
+
+        battery = {
+          display_mode = "glyph";
+          show_label = false;
+        };
+
+        privacy.hide_inactive = true;
+
+        clock.format = "{:%H:%M %a, %b %d}";
+      };
+
+      plugins = {
+        enabled = [
+          "noctalia/kaomoji"
+          "rylos/tailnet"
+        ];
+      };
     };
   };
 }
