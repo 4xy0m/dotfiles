@@ -7,6 +7,7 @@
   myNixOS.obs.enable = true;
   myNixOS.pipewire.enable = true;
   myNixOS.syncthing.enable = true;
+  myNixOS.tailscale.enable = true;
 
   networking.wireless.iwd.enable = true;
   nix.settings = {
