@@ -271,6 +271,7 @@
         eslint.enable = true;
         ts_ls.enable = true;
         jdtls.enable = true;
+        dartls.enable = true;
         tinymist = {
           enable = true;
           config.settings.formatterMode = "typstyle";
@@ -314,26 +315,10 @@
           templates.folder = "templates";
         };
       };
-      treesitter.settings.ensure_installed = lib.mkForce [ ];
-      treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        bash
-        json
-        lua
-        make
-        markdown
-        nix
-        regex
-        toml
-        vim
-        vimdoc
-        xml
-        yaml
-        rust
-        python
-        toml
-      ];
+      direnv.enable = true;
       markdown-preview.enable = true;
       typst-preview.enable = true;
+      csvview.enable = true;
       nvim-tree.enable = lib.mkForce false;
       zellij-nav.enable = true;
       flash.enable = true;
