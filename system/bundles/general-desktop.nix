@@ -1,5 +1,7 @@
-{...}: {
-  myNixOS.sddm.enable = true;
+{ ... }:
+{
+  # myNixOS.sddm.enable = true;
+  myNixOS.noctalia-greeter.enable = true;
   myNixOS.grub.enable = true;
   myNixOS.docker.enable = true;
   myNixOS.obs.enable = true;
