@@ -3,20 +3,15 @@ edit = [{ run = 'yazi-edit "$1"' }]
 
 [open]
 prepend_rules = [
-  { name = "*/", use = [
-    "edit",
-  ] },
-  { mime = "text/*", use = [
-    "edit",
-  ] },
+  { mime = "text/*", use = ["edit"] },
 ]
 
 [[plugin.prepend_fetchers]]
-id = "git"
-name = "*"
-run = "git"
+url   = "*"
+run   = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
-id = "git"
-name = "*/"
-run = "git"
+url   = "*/"
+run   = "git"
+group = "git"

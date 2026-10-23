@@ -1,16 +1,15 @@
 [opener]
-edit = [{ run = 'yazi-pick edit "$@"', desc = "edit" }]
-hsplit = [{ run = 'yazi-pick hsplit $1', desc = "hsplit" }]
+edit = [{ run = 'yazi-pick edit "%s"', desc = "edit" }]
 
 [open]
-prepend_rules = [{ mime = "text/*", use = ["edit", "hsplit", "vsplit"] }]
+prepend_rules = [{ mime = "text/*", use = ["edit"] }]
 
 [[plugin.prepend_fetchers]]
-id = "git"
-name = "*"
-run = "git"
+url   = "*"
+run   = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
-id = "git"
-name = "*/"
-run = "git"
+url   = "*/"
+run   = "git"
+group = "git"
