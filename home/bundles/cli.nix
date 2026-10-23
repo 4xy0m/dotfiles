@@ -18,5 +18,6 @@
     fd
     sd
     jq
+    dig  
   ];
 }
