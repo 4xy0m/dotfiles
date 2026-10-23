@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     inputs.nxchad.homeManagerModules.nixvim
   ];
   programs.zsh.shellAliases.nv = "nvim";
